@@ -1,9 +1,30 @@
+:root {
+  --menubar-bg-color: #dddfcc;
+  --terminal-bg-color: rgba(40,39,39,0.6);
+  --window-boxshadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
+  text-align: center;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
     Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
 }
 
 a {
