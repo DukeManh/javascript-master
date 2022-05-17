@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import styles from '../styles/App.module.css';
+import styles from '../styles/Window.module.css';
 
 import Menubar from './Menubar';
 

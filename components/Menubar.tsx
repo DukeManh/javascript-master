@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import styles from '../styles/App.module.css';
+import styles from '../styles/Window.module.css';
 
 export interface MenubarProps {
   title: string;
