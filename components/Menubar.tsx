@@ -8,7 +8,7 @@ export  interface MenubarProps {
 const Menubar: FC<MenubarProps> = ({title}) => {
   return (
     <div className={styles.menubar}>
-      <div>{title}</div>
+      <h1 className={styles.title}>{title}</h1>
     </div>
   )
 }
