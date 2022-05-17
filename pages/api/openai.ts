@@ -10,7 +10,10 @@ const openai = new OpenAIApi(openaiConfiguration);
 /**
  * Create OpenAI from a prompt
  */
-export default async function handler(req: NextApiRequest, res: NextApiResponse<CreateCompletionResponse>) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<CreateCompletionResponse>
+) {
   const {
     body: { prompt, engineId },
     method,

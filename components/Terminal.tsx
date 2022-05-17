@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC } from 'react';
 import styles from '../styles/App.module.css';
 import Prompt from './Prompt';
 
@@ -8,10 +8,10 @@ const Terminal: FC = () => {
   return (
     <Window title="Javascript helper">
       <div className={styles.terminal}>
-        <Prompt/>
+        <Prompt />
       </div>
     </Window>
-  )
-}
+  );
+};
 
 export default Terminal;

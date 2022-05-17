@@ -4,16 +4,18 @@ import styles from '../styles/App.module.css';
 import Menubar from './Menubar';
 
 export interface WindowProps {
-  title: string,
+  title: string;
 }
 
-const Window: FC<WindowProps> = ({children, title}) => {
-  return <div className={styles.container}>
-    <div className={styles.window}>
-      <Menubar title={title}/>
-      {children}
+const Window: FC<WindowProps> = ({ children, title }) => {
+  return (
+    <div className={styles.container}>
+      <div className={styles.window}>
+        <Menubar title={title} />
+        {children}
+      </div>
     </div>
-  </div>;
+  );
 };
 
 export default Window;
