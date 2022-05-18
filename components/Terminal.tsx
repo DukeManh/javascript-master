@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useState } from 'react';
 import styles from '../styles/Terminal.module.css';
-import { initialPrompts, submitPrompt, updateScrollPosition } from './Terminal.util';
+import { initialPrompts, submitPrompt, updateScrollPosition, responseStop } from './Terminal.util';
 import useLocalStorage from '../hooks/use-local-storage';
 
 import Prompt from './Prompt';
@@ -43,17 +43,25 @@ const Terminal = () => {
   };
 
   const handleSubmit = (prompt: string) => {
+    if (prompt === 'help') {
+      setHistory(
+        history.concat({
+          prompt,
+          result:
+            'This is a message-style chatbot that can answer questions about using JavaScript.\n\nUsage: Hit enter to submit a non-empty prompt.\nHistory: Use Up and Down arrow keys to navigate next and previous commands.\nSession: Responses are saved in the local storage.\nHelp: Type "help"',
+        })
+      );
+      return;
+    }
     setLoading(true);
     submitPrompt(prompt)
       .then((result) => {
         let answer: string = result.choices[0].text.trim();
-        const type = 'JavaScript chatbot:';
-        if (answer.startsWith('JavaScript chatbot:')) {
-          answer = answer.substring(type.length);
+        if (answer.startsWith(responseStop)) {
+          answer = answer.substring(responseStop.length);
         }
         setHistory(
           history.concat({
-            id: result.id,
             prompt,
             result: answer,
           })
@@ -73,12 +81,16 @@ const Terminal = () => {
       <div className={styles.terminal}>
         <div className={styles.history}>
           {initialPrompts.map(({ prompt, result }, i) => (
-            <Response key={`examples-${i}`} prompt={prompt} result={result} />
+            <Response
+              key={`examples-${i}`}
+              prompt={prompt}
+              result={result.substring(responseStop.length)}
+            />
           ))}
         </div>
         <div id="history" className={styles.history}>
-          {history.map(({ id, prompt, result }, i) => (
-            <Response key={i} id={id} prompt={prompt} result={result} />
+          {history.map(({ prompt, result }, i) => (
+            <Response key={i} prompt={prompt} result={result} />
           ))}
         </div>
         <Prompt

@@ -25,6 +25,8 @@ export const initialPrompts = [
   },
 ];
 
+export const responseStop = 'JavaScript chatbot:';
+
 export const submitPrompt = async (prompt: string) => {
   const model = initialPrompts.reduce((acc, curr) => {
     return acc.concat(curr.prompt).concat('\n').concat(curr.result).concat('\n');

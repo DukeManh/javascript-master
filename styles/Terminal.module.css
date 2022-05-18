@@ -6,6 +6,7 @@
   font-family: inherit;
   padding: 0.5rem;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .promptWrap {
@@ -90,7 +91,14 @@
   text-align: left;
   font-family: inherit;
   color: inherit;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.response pre {
+  font-family: inherit;
+  margin: 0;
+  padding: 0;
+  white-space: pre-line;
 }
 
 .pastPrompt {

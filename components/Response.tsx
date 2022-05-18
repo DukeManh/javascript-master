@@ -2,7 +2,6 @@ import React from 'react';
 import styles from '../styles/Terminal.module.css';
 
 export interface ResponseProps {
-  id?: string;
   prompt: string;
   result: string;
 }
@@ -12,9 +11,9 @@ const Response = ({ prompt, result }: ResponseProps) => {
     <div className={styles.response}>
       <div className={styles.pastPrompt}>
         <span className={styles.promptArrow}> {'>'} </span>
-        {prompt}
+        {prompt.trim()}
       </div>
-      <div>{result}</div>
+      <pre>{result.trim()}</pre>
     </div>
   );
 };
