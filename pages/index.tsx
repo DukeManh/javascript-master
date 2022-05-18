@@ -8,6 +8,7 @@ const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
+        <html lang="en" />
         <title>Javascript master</title>
         <meta name="description" content="Terminal style Q/A to answer your javascript questions" />
         <link rel="icon" href="/openai.ico" />
