@@ -13,17 +13,32 @@ export interface PromptProps {
   loading: boolean;
   prompt: string;
   setPrompt: Dispatch<SetStateAction<string>>;
+  getNextCommand: () => void;
+  getPreviousCommand: () => void;
 }
 
-const Prompt = ({ handleSubmit, loading, prompt, setPrompt }: PromptProps) => {
+const Prompt = ({
+  handleSubmit,
+  loading,
+  prompt,
+  setPrompt,
+  getNextCommand,
+  getPreviousCommand,
+}: PromptProps) => {
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setPrompt(e.target.value);
   };
 
   const handleKeyDown: KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
-    if (e.key === 'Enter' && prompt) {
+    if (e.key === 'Enter') {
       e.preventDefault();
-      handleSubmit(prompt);
+      if (prompt.trim()) {
+        handleSubmit(prompt);
+      }
+    } else if (e.key == 'ArrowUp') {
+      getPreviousCommand();
+    } else if (e.key == 'ArrowDown') {
+      getNextCommand();
     }
   };
 
