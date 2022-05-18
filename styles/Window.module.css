@@ -9,7 +9,7 @@
 }
 
 .window {
-  width: 80%;
+  width: clamp(680px, 95vw, 1200px);
   height: 80%;
   border-radius: 0.6rem;
   box-shadow: var(--window-boxshadow);
