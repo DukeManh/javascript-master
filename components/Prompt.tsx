@@ -32,7 +32,7 @@ const Prompt = ({
   const handleKeyDown: KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      if (prompt.trim()) {
+      if (prompt.trim() && !loading) {
         handleSubmit(prompt);
       }
     } else if (e.key == 'ArrowUp') {
@@ -44,7 +44,9 @@ const Prompt = ({
 
   const handleFormSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-    handleSubmit(prompt);
+    if (!loading) {
+      handleSubmit(prompt);
+    }
   };
 
   return (
@@ -60,7 +62,7 @@ const Prompt = ({
               className={styles.javascriptLogo}
             ></img>
             <label className={styles.label} htmlFor="prompt">
-              Javascript helper
+              Javascript master - help
             </label>
           </div>
           <div className={styles.promptKey}>
