@@ -77,6 +77,7 @@ const Prompt = ({
           className={styles.input}
           onChange={handleChange}
           name="prompt"
+          id="prompt"
           value={prompt}
         ></textarea>
         {/* <button type="submit">Submit</button> */}
