@@ -1,14 +1,21 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { ChangeEvent, FormEventHandler, KeyboardEventHandler, useState } from 'react';
+import React, {
+  ChangeEvent,
+  Dispatch,
+  FormEventHandler,
+  KeyboardEventHandler,
+  SetStateAction,
+} from 'react';
 import styles from '../styles/Terminal.module.css';
 
 export interface PromptProps {
   handleSubmit: (prompt: string) => void;
+  loading: boolean;
+  prompt: string;
+  setPrompt: Dispatch<SetStateAction<string>>;
 }
 
-const Prompt = ({ handleSubmit }: PromptProps) => {
-  const [prompt, setPrompt] = useState('');
-
+const Prompt = ({ handleSubmit, loading, prompt, setPrompt }: PromptProps) => {
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setPrompt(e.target.value);
   };
@@ -17,7 +24,6 @@ const Prompt = ({ handleSubmit }: PromptProps) => {
     if (e.key === 'Enter' && prompt) {
       e.preventDefault();
       handleSubmit(prompt);
-      setPrompt('');
     }
   };
 
@@ -47,6 +53,9 @@ const Prompt = ({ handleSubmit }: PromptProps) => {
           </div>
         </div>
         <textarea
+          style={{
+            opacity: loading ? '0.5' : 1,
+          }}
           onKeyDown={handleKeyDown}
           className={styles.input}
           onChange={handleChange}

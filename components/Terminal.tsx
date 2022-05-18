@@ -24,6 +24,7 @@ const submitPrompt = async (prompt: string) => {
   throw new Error('Uncaught Error :(');
 };
 
+// Scroll the latest response into view
 const updateScrollPosition = () => {
   const history = document.getElementById('history');
   if (!history) {
@@ -39,12 +40,15 @@ const updateScrollPosition = () => {
 
 const Terminal = () => {
   const [history, setHistory] = useState<ResponseProps[]>([]);
+  const [prompt, setPrompt] = useState('');
+  const [loading, setLoading] = useState(false);
 
   useLayoutEffect(() => {
     updateScrollPosition();
   }, [history]);
 
   const handleSubmit = (prompt: string) => {
+    setLoading(true);
     submitPrompt(prompt)
       .then((result) => {
         let answer: string = result.choices[0].text.trim();
@@ -62,6 +66,10 @@ const Terminal = () => {
       })
       .catch((error) => {
         console.log(error);
+      })
+      .finally(() => {
+        setLoading(false);
+        setPrompt('');
       });
   };
 
@@ -73,7 +81,12 @@ const Terminal = () => {
             <Response key={id} id={id} prompt={prompt} result={result} />
           ))}
         </div>
-        <Prompt handleSubmit={handleSubmit} />
+        <Prompt
+          prompt={prompt}
+          setPrompt={setPrompt}
+          loading={loading}
+          handleSubmit={handleSubmit}
+        />
       </div>
     </Window>
   );
