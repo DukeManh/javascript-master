@@ -1,6 +1,6 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import styles from '../styles/Terminal.module.css';
-import { submitPrompt, updateScrollPosition } from './Terminal.util';
+import { initialPrompts, submitPrompt, updateScrollPosition } from './Terminal.util';
 import useLocalStorage from '../hooks/use-local-storage';
 
 import Prompt from './Prompt';
@@ -71,9 +71,14 @@ const Terminal = () => {
   return (
     <Window title="Javascript helper">
       <div className={styles.terminal}>
+        <div className={styles.history}>
+          {initialPrompts.map(({ prompt, result }, i) => (
+            <Response key={`examples-${i}`} prompt={prompt} result={result} />
+          ))}
+        </div>
         <div id="history" className={styles.history}>
-          {history.map(({ id, prompt, result }) => (
-            <Response key={id} id={id} prompt={prompt} result={result} />
+          {history.map(({ id, prompt, result }, i) => (
+            <Response key={i} id={id} prompt={prompt} result={result} />
           ))}
         </div>
         <Prompt

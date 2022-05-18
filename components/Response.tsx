@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../styles/Terminal.module.css';
 
 export interface ResponseProps {
-  id: string;
+  id?: string;
   prompt: string;
   result: string;
 }
