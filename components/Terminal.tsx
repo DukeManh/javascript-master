@@ -3,12 +3,7 @@ import styles from '../styles/Terminal.module.css';
 
 import Prompt from './Prompt';
 import Window from './Window';
-
-export interface Response {
-  id: string;
-  prompt: string;
-  result: string;
-}
+import Response, { ResponseProps } from './Response';
 
 const submitPrompt = async (prompt: string) => {
   const response = await fetch('/api/openai', {
@@ -32,7 +27,7 @@ const submitPrompt = async (prompt: string) => {
 };
 
 const Terminal = () => {
-  const [history, setHistory] = useState<Response[]>([]);
+  const [history, setHistory] = useState<ResponseProps[]>([]);
 
   const handleSubmit = (prompt: string) => {
     submitPrompt(prompt)
@@ -53,11 +48,8 @@ const Terminal = () => {
   return (
     <Window title="Javascript helper">
       <div className={styles.terminal}>
-        {history.map((response) => (
-          <div key={response.id}>
-            <div>{response.prompt}</div>
-            <div>{response.result}</div>
-          </div>
+        {history.map(({ id, prompt, result }) => (
+          <Response key={id} id={id} prompt={prompt} result={result} />
         ))}
         <Prompt handleSubmit={handleSubmit} />
       </div>

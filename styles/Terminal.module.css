@@ -4,11 +4,12 @@
   background-color: var(--terminal-bg-color);
   color: var(--text-color);
   font-family: inherit;
+  padding: 0.5rem;
+  overflow-y: scroll;
 }
 
 .promptWrap {
   display: flex;
-  padding: 0.5rem;
   height: 100%;
 }
 
@@ -39,4 +40,20 @@
 .input:focus,
 .input:active {
   outline: none;
+}
+
+.response {
+  text-align: left;
+  font-family: inherit;
+  color: inherit;
+  margin-bottom: 1rem;
+}
+
+.pastPrompt {
+  margin-bottom: 0.3rem;
+}
+
+.pastPrompt > span {
+  color: var(--light-green);
+  font-weight: 600;
 }
