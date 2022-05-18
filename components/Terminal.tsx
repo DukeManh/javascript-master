@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { useState } from 'react';
 import styles from '../styles/Terminal.module.css';
 
 import Prompt from './Prompt';
@@ -31,7 +31,7 @@ const submitPrompt = async (prompt: string) => {
   throw new Error('Uncaught Error :(');
 };
 
-const Terminal: FC = () => {
+const Terminal = () => {
   const [history, setHistory] = useState<Response[]>([]);
 
   const handleSubmit = (prompt: string) => {

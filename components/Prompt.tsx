@@ -1,11 +1,11 @@
-import React, { ChangeEvent, FC, FormEventHandler, KeyboardEventHandler, useState } from 'react';
+import React, { ChangeEvent, FormEventHandler, KeyboardEventHandler, useState } from 'react';
 import styles from '../styles/Terminal.module.css';
 
 export interface PromptProps {
   handleSubmit: (prompt: string) => void;
 }
 
-const Prompt: FC<PromptProps> = ({ handleSubmit }) => {
+const Prompt = ({ handleSubmit }: PromptProps) => {
   const [prompt, setPrompt] = useState('');
 
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {

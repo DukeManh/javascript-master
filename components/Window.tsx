@@ -1,13 +1,14 @@
-import React, { FC } from 'react';
+import React, { ReactNode } from 'react';
 import styles from '../styles/Window.module.css';
 
 import Menubar from './Menubar';
 
 export interface WindowProps {
+  children: ReactNode | undefined;
   title: string;
 }
 
-const Window: FC<WindowProps> = ({ children, title }) => {
+const Window = ({ children, title }: WindowProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.window}>
