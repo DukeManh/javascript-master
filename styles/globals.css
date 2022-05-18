@@ -33,4 +33,20 @@ a {
 
 * {
   box-sizing: border-box;
+
+  scrollbar-color: var(--menubar-bg-color) transparent !important;
+  scrollbar-width: 0.4rem !important;
+}
+
+*::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--menubar-bg-color);
+  border-radius: 1rem;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
 }
