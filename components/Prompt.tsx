@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { ChangeEvent, FormEventHandler, KeyboardEventHandler, useState } from 'react';
 import styles from '../styles/Terminal.module.css';
 
@@ -28,9 +29,23 @@ const Prompt = ({ handleSubmit }: PromptProps) => {
   return (
     <div className={styles.promptWrap}>
       <form onSubmit={handleFormSubmit} className={styles.prompt}>
-        <label className={styles.label} htmlFor="prompt">
-          JS {'>'}
-        </label>
+        <div className={styles.dollar}>
+          <div className={styles.promptHelper}>
+            <img
+              alt=""
+              width="1rem"
+              height="1rem"
+              src="/javascript-logo.png"
+              className={styles.javascriptLogo}
+            ></img>
+            <label className={styles.label} htmlFor="prompt">
+              Javascript helper
+            </label>
+          </div>
+          <div className={styles.promptKey}>
+            <span className={styles.promptArrow}>{'>'}</span>
+          </div>
+        </div>
         <textarea
           onKeyDown={handleKeyDown}
           className={styles.input}

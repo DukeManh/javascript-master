@@ -11,7 +11,7 @@ const Response = ({ prompt, result }: ResponseProps) => {
   return (
     <div className={styles.response}>
       <div className={styles.pastPrompt}>
-        <span> {'>'} </span>
+        <span className={styles.promptArrow}> {'>'} </span>
         {prompt}
       </div>
       <div>{result}</div>
