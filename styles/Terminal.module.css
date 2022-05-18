@@ -2,4 +2,38 @@
   width: 100%;
   height: 100%;
   background-color: var(--terminal-bg-color);
+  color: var(--text-color);
+  font-family: inherit;
+}
+
+.promptWrap {
+  display: flex;
+  padding: 0.5rem;
+  height: 100%;
+}
+
+.prompt {
+  flex: 1;
+  flex-direction: row;
+  display: flex;
+}
+
+.label {
+  width: 3rem;
+}
+
+.input {
+  border: none;
+  background-color: transparent;
+  color: inherit;
+  resize: none;
+  width: 100%;
+  height: 100%;
+  font-family: inherit;
+  text-align: none;
+}
+
+.input:focus,
+.input:active {
+  outline: none;
 }

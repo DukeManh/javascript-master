@@ -2,6 +2,7 @@
   --menubar-bg-color: #dddfcc;
   --terminal-bg-color: rgba(40, 39, 39, 0.6);
   --window-boxshadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  --text-color: #ebdbb3;
 }
 
 html,
