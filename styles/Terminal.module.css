@@ -10,7 +10,7 @@
 
 .promptWrap {
   display: flex;
-  height: 100%;
+  height: calc(100% - 1.5rem);
 }
 
 .prompt {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import styles from '../styles/Terminal.module.css';
 
 import Prompt from './Prompt';
@@ -24,8 +24,25 @@ const submitPrompt = async (prompt: string) => {
   throw new Error('Uncaught Error :(');
 };
 
+const updateScrollPosition = () => {
+  const history = document.getElementById('history');
+  if (!history) {
+    return;
+  }
+
+  const responses = history.querySelectorAll(':scope > div');
+  const lastResponse = responses.length ? responses[responses.length - 1] : undefined;
+  if (lastResponse) {
+    lastResponse.scrollIntoView();
+  }
+};
+
 const Terminal = () => {
   const [history, setHistory] = useState<ResponseProps[]>([]);
+
+  useLayoutEffect(() => {
+    updateScrollPosition();
+  }, [history]);
 
   const handleSubmit = (prompt: string) => {
     submitPrompt(prompt)
@@ -51,7 +68,7 @@ const Terminal = () => {
   return (
     <Window title="Javascript helper">
       <div className={styles.terminal}>
-        <div className={styles.history}>
+        <div id="history" className={styles.history}>
           {history.map(({ id, prompt, result }) => (
             <Response key={id} id={id} prompt={prompt} result={result} />
           ))}
