@@ -1,19 +1,21 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import styles from '../styles/Terminal.module.css';
 import { submitPrompt, updateScrollPosition } from './Terminal.util';
+import useLocalStorage from '../hooks/use-local-storage';
 
 import Prompt from './Prompt';
 import Window from './Window';
 import Response, { ResponseProps } from './Response';
 
 const Terminal = () => {
-  const [history, setHistory] = useState<ResponseProps[]>([]);
+  const [history, setHistory] = useLocalStorage<ResponseProps[]>('response-history', []);
   const [prompt, setPrompt] = useState('');
   const [loading, setLoading] = useState(false);
   const [commandIndex, setCommandIndex] = useState(history.length);
 
   useLayoutEffect(() => {
     updateScrollPosition();
+    setCommandIndex(history.length);
   }, [history]);
 
   const getNextCommand = () => {
@@ -56,7 +58,6 @@ const Terminal = () => {
             result: answer,
           })
         );
-        setCommandIndex(history.length + 1);
       })
       .catch((error) => {
         console.log(error);
