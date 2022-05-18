@@ -14,12 +14,14 @@
 
 .prompt {
   flex: 1;
-  flex-direction: row;
-  display: flex;
+  position: relative;
 }
 
 .label {
   width: 3rem;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .input {
@@ -31,6 +33,7 @@
   height: 100%;
   font-family: inherit;
   text-align: none;
+  text-indent: 3rem;
 }
 
 .input:focus,
